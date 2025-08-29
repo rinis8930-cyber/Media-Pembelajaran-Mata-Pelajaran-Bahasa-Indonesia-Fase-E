@@ -1,0 +1,368 @@
+import streamlit as st
+import random
+
+# Konfigurasi halaman
+st.set_page_config(
+    page_title="Media Pembelajaran Bahasa Indonesia - Fase E",
+    page_icon="📚",
+    layout="wide"
+)
+
+# CSS kustom untuk styling
+st.markdown("""
+<style>
+    .main-header {
+        font-size: 3rem;
+        color: #1E88E5;
+        text-align: center;
+    }
+    .sub-header {
+        font-size: 2rem;
+        color: #0D47A1;
+        border-bottom: 2px solid #64B5F6;
+        padding-bottom: 0.3rem;
+        margin-top: 2rem;
+    }
+    .card {
+        background-color: #E3F2FD;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .quiz-container {
+        background-color: #FFF8E1;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .correct-answer {
+        color: #2E7D32;
+        font-weight: bold;
+    }
+    .incorrect-answer {
+        color: #C62828;
+        font-weight: bold;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Judul aplikasi
+st.markdown('<h1 class="main-header">📚 Media Pembelajaran Interaktif Bahasa Indonesia - Fase E</h1>', unsafe_allow_html=True)
+
+# Navigasi menu
+menu = st.sidebar.radio("Pilih Menu", ["Beranda", "Materi Pembelajaran", "Kuis Interaktif", "Latihan", "Tentang"])
+
+# Halaman Beranda
+if menu == "Beranda":
+    st.markdown("## Selamat Datang di Portal Pembelajaran Bahasa Indonesia!")
+    st.image("https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg", 
+             width=400, caption="Ilustrasi Pembelajaran Bahasa Indonesia")
+    
+    st.write("""
+    Portal ini dirancang untuk membantu siswa Fase E mempelajari Bahasa Indonesia 
+    dengan cara yang menyenangkan dan interaktif. Di sini Anda akan menemukan:
+    
+    - 📖 **Materi Pembelajaran** yang lengkap dan mudah dipahami
+    - ❓ **Kuis Interaktif** untuk menguji pemahaman Anda
+    - ✍️ **Latihan** untuk mengasah kemampuan menulis dan analisis
+    - 🎯 **Pembahasan** yang membantu Anda memahami konsep dengan baik
+    
+    Ayo mulai petualangan belajar Bahasa Indonesia Anda!
+    """)
+    
+    # Tampilan fitur unggulan dalam bentuk kolom
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.info("**Materi Lengkap**")
+        st.write("Teks Eksposisi, Cerpen, Puisi, dan banyak lagi")
+    
+    with col2:
+        st.info("**Kuis Interaktif**")
+        st.write("Uji pemahaman dengan kuis yang menyenangkan")
+    
+    with col3:
+        st.info("**Latihan Praktis**")
+        st.write("Terapkan pengetahuan dengan latihan langsung")
+
+# Halaman Materi
+elif menu == "Materi Pembelajaran":
+    st.markdown('<h2 class="sub-header">Materi Bahasa Indonesia</h2>', unsafe_allow_html=True)
+    
+    # Tab untuk materi yang berbeda
+    tab1, tab2, tab3, tab4 = st.tabs(["Teks Eksposisi", "Cerpen", "Puisi", "Teks Prosedur"])
+    
+    with tab1:
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+        st.header("Teks Eksposisi")
+        st.image("https://img.freepik.com/free-vector/exposition-concept-illustration_114360-13429.jpg", 
+                 width=300, caption="Ilustrasi Teks Eksposisi")
+        
+        st.write("""
+        **Pengertian**: Teks eksposisi adalah teks yang bertujuan untuk menjelaskan atau memaparkan informasi, 
+        gagasan, atau pendapat secara jelas, ringkas, dan akurat.
+        
+        **Ciri-ciri Teks Eksposisi**:
+        - Bersifat informatif dan faktual
+        - Menggunakan data dan fakta untuk mendukung argumen
+        - Disajikan secara objektif dan logis
+        - Bahasa yang digunakan jelas, tepat, dan formal
+        
+        **Struktur Teks Eksposisi**:
+        1. **Tesis**: Pernyataan pendapat atau pandangan penulis tentang topik
+        2. **Argumentasi**: Alasan, bukti, atau data yang mendukung tesis
+        3. **Penegasan Ulang**: Simpulan dan penegasan pendapat
+        
+        **Contoh Topik**:
+        - Dampak penggunaan media sosial bagi remaja
+        - Pentingnya literasi digital di era modern
+        - Manfaat penerapan energi terbarukan
+        """)
+        
+        with st.expander("Contoh Teks Eksposisi"):
+            st.write("""
+            **Judul: Pentingnya Pendidikan Karakter dalam Dunia Pendidikan**
+            
+            **Tesis**: 
+            Pendidikan karakter memiliki peran yang sangat penting dalam membentuk kepribadian 
+            dan moral generasi muda di tengah perkembangan zaman yang semakin kompleks.
+            
+            **Argumentasi**:
+            Pertama, pendidikan karakter membantu siswa mengembangkan nilai-nilai positif seperti 
+            kejujuran, tanggung jawab, dan rasa hormat. Kedua, dalam era globalisasi, tantangan 
+            moral semakin kompleks sehingga diperlukan fondasi karakter yang kuat. Data menunjukkan 
+            bahwa sekolah yang menerapkan pendidikan karakter memiliki tingkat kenakalan remaja 
+            yang lebih rendah.
+            
+            **Penegasan Ulang**:
+            Dengan demikian, dapat disimpulkan bahwa pendidikan karakter tidak kalah pentingnya 
+            dengan pendidikan akademik. Integrasi kedua aspek ini akan menciptakan generasi yang 
+            tidak hanya cerdas secara intelektual tetapi juga berakhlak mulia.
+            """)
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    with tab2:
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+        st.header("Cerpen (Cerita Pendek)")
+        st.image("https://img.freepik.com/free-vector/people-reading-poetry-illustration_23-2148856496.jpg", 
+                 width=300, caption="Ilustrasi Membaca Cerpen")
+        
+        st.write("""
+        **Pengertian**: Cerpen adalah karya sastra berbentuk prosa fiksi yang mengisahkan 
+        permasalahan kehidupan seorang tokoh secara ringkas dan padat.
+        
+        **Unsur-unsur Cerpen**:
+        - **Tema**: Gagasan utama yang mendasari cerita
+        - **Tokoh dan Penokohan**: Pelaku cerita dan sifat-sifatnya
+        - **Alur (Plot)**: Urutan peristiwa dalam cerita (pengenalan, konflik, klimaks, resolusi)
+        - **Latar**: Setting tempat, waktu, dan suasana dalam cerita
+        - **Sudut Pandang**: Cara penceritaan (orang pertama, ketiga, dll.)
+        - **Amanat**: Pesan moral yang ingin disampaikan pengarang
+        
+        **Ciri-ciri Cerpen**:
+        - Alur cerita sederhana dan tunggal
+        - Tokoh yang ditampilkan terbatas
+        - Membaca sekali habis (sekitar 10-30 menit)
+        - Mengangkat peristiwa kehidupan yang khas
+        
+        **Contoh Cerpen Terkenal**:
+        - "Robohnya Surau Kami" oleh A.A. Navis
+        - "Anak Rantau" oleh A. Fuadi
+        - "Bulan Jingga dalam Kepala" oleh Seno Gumira Ajidarma
+        """)
+        
+        with st.expander("Analisis Unsur Cerpen"):
+            st.write("""
+            **Judul: "Anak Rantau" oleh A. Fuadi**
+            
+            **Tema**: Perjuangan seorang anak merantau untuk mencapai cita-cita
+            **Tokoh Utama**: Alif (pekerja keras, pantang menyerah)
+            **Alur**: Alif meninggalkan kampung halaman, menghadapi kesulitan di perantauan, 
+                    akhirnya berhasil meraih kesuksesan
+            **Latar**: Minangkabau, Jakarta, tahun 1990-an
+            **Amanat**: Perjuangan dan kerja keras akan membuahkan hasil
+            """)
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    with tab3:
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+        st.header("Puisi")
+        st.write("Materi tentang puisi akan segera hadir. Silakan periksa kembali di lain waktu.")
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    with tab4:
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+        st.header("Teks Prosedur")
+        st.write("Materi tentang teks prosedur akan segera hadir. Silakan periksa kembali di lain waktu.")
+        st.markdown('</div>', unsafe_allow_html=True)
+
+# Halaman Kuis
+elif menu == "Kuis Interaktif":
+    st.markdown('<h2 class="sub-header">Kuis Interaktif</h2>', unsafe_allow_html=True)
+    st.write("Uji pemahaman Anda dengan menjawab pertanyaan-pertanyaan berikut:")
+    
+    # Inisialisasi state untuk skor jika belum ada
+    if 'score' not in st.session_state:
+        st.session_state.score = 0
+    if 'current_question' not in st.session_state:
+        st.session_state.current_question = 0
+    if 'answers_submitted' not in st.session_state:
+        st.session_state.answers_submitted = False
+    
+    # Daftar pertanyaan
+    questions = [
+        {
+            "question": "Apa tujuan utama teks eksposisi?",
+            "options": ["Menghibur pembaca", "Menjelaskan informasi", "Mempengaruhi pembaca", "Menceritakan pengalaman"],
+            "answer": "Menjelaskan informasi"
+        },
+        {
+            "question": "Unsur intrinsik cerpen yang berhubungan dengan latar belakang cerita adalah...",
+            "options": ["Alur", "Latar", "Amanat", "Tema"],
+            "answer": "Latar"
+        },
+        {
+            "question": "Manakah yang BUKAN termasuk struktur teks eksposisi?",
+            "options": ["Tesis", "Argumentasi", "Penegasan Ulang", "Konflik"],
+            "answer": "Konflik"
+        },
+        {
+            "question": "Dalam cerpen, urutan peristiwa dari awal sampai akhir disebut...",
+            "options": ["Tema", "Alur", "Latar", "Amanat"],
+            "answer": "Alur"
+        }
+    ]
+    
+    # Tampilan pertanyaan saat ini
+    if st.session_state.current_question < len(questions):
+        q = questions[st.session_state.current_question]
+        
+        st.markdown(f'<div class="quiz-container">', unsafe_allow_html=True)
+        st.markdown(f"**Pertanyaan {st.session_state.current_question + 1}/{len(questions)}**")
+        st.markdown(f"### {q['question']}")
+        
+        # Tampilkan opsi jawaban
+        user_answer = st.radio("Pilih jawaban:", q['options'], key=f"q{st.session_state.current_question}")
+        
+        # Tombol untuk submit jawaban
+        if st.button("Submit Jawaban", key=f"submit{st.session_state.current_question}"):
+            if user_answer == q['answer']:
+                st.session_state.score += 1
+                st.markdown(f'<p class="correct-answer">✅ Benar! Jawaban Anda tepat.</p>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<p class="incorrect-answer">❌ Salah. Jawaban yang benar adalah: {q["answer"]}</p>', unsafe_allow_html=True)
+            
+            st.session_state.answers_submitted = True
+            
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Tombol untuk pertanyaan berikutnya
+        if st.session_state.answers_submitted:
+            if st.button("Pertanyaan Berikutnya →", key=f"next{st.session_state.current_question}"):
+                st.session_state.current_question += 1
+                st.session_state.answers_submitted = False
+                st.rerun()
+    else:
+        # Tampilkan hasil akhir
+        st.markdown(f'<div class="quiz-container">', unsafe_allow_html=True)
+        st.markdown("### 🎉 Kuis Selesai!")
+        st.markdown(f"### Skor Anda: {st.session_state.score} dari {len(questions)}")
+        
+        # Tampilan berdasarkan skor
+        if st.session_state.score == len(questions):
+            st.success("Luar biasa! Anda menguasai materi dengan sempurna.")
+        elif st.session_state.score >= len(questions) / 2:
+            st.warning("Bagus! Masih ada sedikit yang perlu dipelajari lagi.")
+        else:
+            st.error("Perlu belajar lebih giat lagi. Jangan menyerah!")
+        
+        # Tombol untuk mengulang kuis
+        if st.button("🔄 Ulangi Kuis"):
+            st.session_state.score = 0
+            st.session_state.current_question = 0
+            st.session_state.answers_submitted = False
+            st.rerun()
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+
+# Halaman Latihan
+elif menu == "Latihan":
+    st.markdown('<h2 class="sub-header">Latihan Praktis</h2>', unsafe_allow_html=True)
+    
+    tab1, tab2 = st.tabs(["Analisis Teks Eksposisi", "Tulis Cerpen Pendek"])
+    
+    with tab1:
+        st.markdown("""
+        **Instruksi**: Bacalah teks eksposisi berikut dan identifikasi unsur-unsurnya!
+        
+        **Teks**:
+        Pemanasan global telah menjadi isu penting dalam beberapa dekade terakhir. 
+        Berdasarkan data NASA, suhu rata-rata bumi telah meningkat 1°C sejak abad ke-19. 
+        Peningkatan ini terutama disebabkan oleh emisi karbon dioksida dan gas rumah kaca lainnya. 
+        Dampaknya sudah terlihat dengan mencairnya es di kutub, naiknya permukaan air laut, 
+        dan perubahan pola cuaca ekstrem. Oleh karena itu, diperlukan aksi kolektif untuk 
+        mengurangi emisi gas rumah kaca dan beralih ke energi terbarukan.
+        """)
+        
+        with st.form("analisis_teks"):
+            tesis = st.text_input("Tesis (Pernyataan pendapat):")
+            argumentasi = st.text_area("Argumentasi (Bukti atau data pendukung):")
+            penegasan = st.text_input("Penegasan Ulang (Simpulan):")
+            
+            submitted = st.form_submit_button("Submit Analisis")
+            if submitted:
+                st.success("Terima kasih telah mengirimkan analisis Anda!")
+                st.balloons()
+    
+    with tab2:
+        st.markdown("""
+        **Instruksi**: Buatlah sebuah cerpen pendek dengan ketentuan berikut:
+        - Tema: Persahabatan
+        - Panjang: 200-300 kata
+        - Sertakan minimal 2 tokoh
+        - Gunakan alur yang jelas (pengenalan, konflik, resolusi)
+        """)
+        
+        judul = st.text_input("Judul Cerpen:")
+        cerpen = st.text_area("Tulis cerpen Anda di sini:", height=300)
+        
+        if st.button("Simpan Cerpen"):
+            if judul and cerpen:
+                st.success("Cerpen Anda telah disimpan!")
+                st.snow()
+            else:
+                st.error("Judul dan isi cerpen harus diisi!")
+
+# Halaman Tentang
+elif menu == "Tentang":
+    st.markdown('<h2 class="sub-header">Tentang Aplikasi</h2>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div class="card">
+    Media pembelajaran ini dibuat untuk mendukung pembelajaran Bahasa Indonesia fase E 
+    dengan pendekatan yang interaktif dan menyenangkan.
+    
+    **Fitur Utama**:
+    - Materi pembelajaran lengkap dan mudah dipahami
+    - Kuis interaktif dengan penilaian otomatis
+    - Latihan praktis untuk mengasah kemampuan
+    - Antarmuka yang responsif dan user-friendly
+    
+    **Teknologi**:
+    - Dikembangkan dengan Python dan Streamlit
+    - Dapat diintegrasikan dengan video, gambar, dan konten multimedia
+    - Dapat diakses melalui berbagai perangkat
+    
+    **Tujuan Pembelajaran**:
+    - Memahami berbagai jenis teks dalam Bahasa Indonesia
+    - Menganalisis unsur-unsur intrinsik karya sastra
+    - Mengembangkan kemampuan menulis dan berpikir kritis
+    - Meningkatkan apresiasi terhadap sastra Indonesia
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.write("---")
+    st.write("**Dikembangkan oleh**: Tim Pengembang Pendidikan")
+    st.write("**Kontak**: edu@example.com")
+    st.write("**Versi**: 1.0.0")
